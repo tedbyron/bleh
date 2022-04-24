@@ -1,18 +1,6 @@
 use nannou::prelude::*;
 
-pub struct Model {
-    #[allow(dead_code)]
-    window: window::Id,
-}
-
-pub fn model(app: &App) -> Model {
-    let window = app.new_window().view(view).build().unwrap();
-    Model { window }
-}
-
-pub fn update(_app: &App, _model: &mut Model, _update: Update) {}
-
-pub fn view(app: &App, _model: &Model, frame: Frame<'_>) {
+pub fn view(app: &App, frame: Frame<'_>) {
     let draw = app.draw();
     let win = app.window_rect();
 

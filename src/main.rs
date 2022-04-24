@@ -2,10 +2,10 @@
 #![allow(clippy::needless_pass_by_value)]
 #![doc = include_str!("../README.md")]
 
-mod shapes;
+mod animation;
 
-use shapes::*;
+use animation::*;
 
 fn main() {
-    nannou::app(model).update(update).run();
+    nannou::sketch(view).run();
 }
