@@ -25,19 +25,19 @@ fn view(app: &App, frame: Frame<'_>) {
         let d = (tx - x).abs();
         let dn = d / win.w();
         let weight = max_weight * dn;
-        let hue = 1.0;
 
-        // Linear.
-        let pa = pt2(x, win.top());
-        let pb = pt2(x, win.bottom());
+        // linear
+        // let hue = 1.0;
+        // let pa = pt2(x, win.top());
+        // let pb = pt2(x, win.bottom());
 
-        // Radial.
+        // radial
+        let hue = t.mul_add(0.1, dn * 0.3);
         let rad = t.mul_add(0.05, f) * 2.0 * PI;
         let mag = diagonal;
         let pa = pt2(rad.cos() * mag, rad.sin() * mag);
         let pb = pt2(rad.cos() * -mag, rad.sin() * -mag);
 
-        let hue = t * 0.1 + dn * 0.3;
         draw.line()
             .weight(weight)
             .points(pa, pb)
