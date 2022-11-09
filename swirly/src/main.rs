@@ -33,11 +33,11 @@ struct Model {
 const N_THINGS: usize = 1000;
 const SIZE: usize = 500;
 
-fn key_pressed(app: &App, model: &mut Model, key: Key) {
+fn key_pressed(_app: &App, model: &mut Model, key: Key) {
     match key {
-        Key::S => app
-            .main_window()
-            .capture_frame("images/".to_owned() + &app.exe_name().unwrap() + ".png"),
+        // Key::S => app
+        //     .main_window()
+        //     .capture_frame("images/".to_owned() + &app.exe_name().unwrap() + ".png"),
         Key::Up => model.parameters.sn_ratio += 0.001,
         Key::Down if model.parameters.sn_ratio > 0.0 => model.parameters.sn_ratio -= 0.001,
         Key::Right => model.parameters.speed += 1.0,

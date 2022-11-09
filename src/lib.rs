@@ -1,26 +1,19 @@
 #![warn(clippy::all, clippy::nursery, rust_2018_idioms)]
 
-use chrono::{Datelike, Utc};
+use chrono::Utc;
 use nannou::prelude::*;
 use std::path::PathBuf;
 
 pub fn frame_path(app: &App) -> PathBuf {
     save_path(app)
-        .join(format!("{:03}", app.elapsed_frames()))
+        .join(Utc::now().to_rfc3339())
         .with_extension("png")
 }
 
 pub fn save_path(app: &App) -> PathBuf {
-    let now = Utc::now();
     app.assets_path()
         .expect("Missing assets path")
         .join("images")
-        .join(format!(
-            "{}-{:02}-{:02}",
-            now.year(),
-            now.month(),
-            now.day()
-        ))
         .join(app.exe_name().unwrap())
 }
 
