@@ -2,7 +2,6 @@
 
 use nannou::noise::{NoiseFn, Perlin};
 use nannou::prelude::*;
-use nannou::rand::{self, Rng};
 
 fn main() {
     nannou::app(model).update(update).run();
@@ -58,12 +57,11 @@ fn model(app: &App) -> Model {
         .unwrap();
 
     let mut things = Vec::new();
-    let mut rng = rand::thread_rng();
 
     for _ in 0..N_THINGS {
         let thing = Thing::new(vec2(
-            (rng.gen::<f32>() - 0.5) * SIZE as f32,
-            (rng.gen::<f32>() - 0.5) * SIZE as f32,
+            (random::<f32>() - 0.5) * SIZE as f32,
+            (random::<f32>() - 0.5) * SIZE as f32,
         ));
 
         things.push(thing);
@@ -83,13 +81,12 @@ fn model(app: &App) -> Model {
 fn update(app: &App, model: &mut Model, _update: Update) {
     let time = app.elapsed_frames() as f64 / model.parameters.speed;
     let sn = time.cos() as f64 * model.parameters.sn_ratio;
-    let mut rng = rand::thread_rng();
 
     for thing in model.things.iter_mut() {
         thing.positions.clear();
         thing.positions.push(vec2(
-            (rng.gen::<f32>() - 0.5) * SIZE as f32,
-            (rng.gen::<f32>() - 0.5) * SIZE as f32,
+            (random::<f32>() - 0.5) * SIZE as f32,
+            (random::<f32>() - 0.5) * SIZE as f32,
         ));
 
         for _ in 0..model.parameters.loops {

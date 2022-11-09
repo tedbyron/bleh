@@ -3,6 +3,15 @@ name = "bleh"
 version = "0.1.0"
 edition = "2021"
 
+[profile.dev]
+debug = false
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
 [workspace]
 resolver = "2"
 members = ["barcode", "centroid", "colors", "tutorial", "particles", "swirly"]
