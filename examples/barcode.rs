@@ -9,7 +9,7 @@ fn main() {
 fn view(app: &App, frame: Frame<'_>) {
     let draw = app.draw();
     let win = app.window_rect();
-    let t = app.duration.since_start.secs() as f32;
+    let t = app.time as f32;
     let diagonal = win.top_left().distance(win.bottom_right());
 
     draw.background().color(BLACK);

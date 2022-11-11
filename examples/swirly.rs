@@ -3,9 +3,8 @@
 use nannou::noise::{NoiseFn, Perlin};
 use nannou::prelude::*;
 
-fn main() {
-    nannou::app(model).update(update).run();
-}
+const N_THINGS: usize = 1000;
+const SIZE: usize = 500;
 
 struct Thing {
     positions: Vec<Vec2>,
@@ -30,8 +29,9 @@ struct Model {
     parameters: Parameters,
 }
 
-const N_THINGS: usize = 1000;
-const SIZE: usize = 500;
+fn main() {
+    nannou::app(model).update(update).run();
+}
 
 fn key_pressed(_app: &App, model: &mut Model, key: Key) {
     match key {

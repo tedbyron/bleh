@@ -3,10 +3,6 @@
 use nannou::prelude::*;
 use nannou::rand::{self, prelude::ThreadRng, Rng};
 
-fn main() {
-    nannou::app(model).update(update).run();
-}
-
 struct Thing {
     poly: Vec<Vec2>,
     points: Vec<Point2>,
@@ -14,6 +10,10 @@ struct Thing {
     color: Hsla,
     number_of_sides: usize,
     radius: f32,
+}
+
+fn main() {
+    nannou::app(model).update(update).run();
 }
 
 fn corner(i: usize, radius: f32, number_of_sides: usize) -> Vec2 {

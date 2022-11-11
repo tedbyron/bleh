@@ -3,8 +3,12 @@
 use nannou::noise::{NoiseFn, Perlin};
 use nannou::prelude::*;
 
-fn main() {
-    nannou::app(model).update(update).run();
+struct Ball {
+    position: Point2,
+    velocity: Vec2,
+    acceleration: Vec2,
+    mass: f32,
+    color: Hsla,
 }
 
 struct Model {
@@ -15,12 +19,8 @@ struct Model {
     boundary: f32,
 }
 
-struct Ball {
-    position: Point2,
-    velocity: Vec2,
-    acceleration: Vec2,
-    mass: f32,
-    color: Hsla,
+fn main() {
+    nannou::app(model).update(update).run();
 }
 
 impl Ball {
