@@ -12,10 +12,6 @@ codegen-units = 1
 panic = "abort"
 strip = true
 
-[workspace]
-resolver = "2"
-members = ["barcode", "centroid", "colors", "tutorial", "particles", "swirly"]
-
 [dependencies]
 chrono = "0.4.22"
 nannou = "0.18.1"
