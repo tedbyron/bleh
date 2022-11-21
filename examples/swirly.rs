@@ -71,7 +71,7 @@ fn model(app: &App) -> Model {
         things,
         noise: Perlin::new(),
         parameters: Parameters {
-            speed: 120.0,
+            speed: 320.0,
             sn_ratio: 0.01,
             loops: 50,
         },
@@ -80,7 +80,7 @@ fn model(app: &App) -> Model {
 
 fn update(app: &App, model: &mut Model, _update: Update) {
     let time = app.elapsed_frames() as f64 / model.parameters.speed;
-    let sn = time.cos() as f64 * model.parameters.sn_ratio;
+    let sn = time.sin() as f64 * model.parameters.sn_ratio;
 
     for thing in model.things.iter_mut() {
         thing.positions.clear();
@@ -118,18 +118,18 @@ fn view(app: &App, model: &Model, frame: Frame<'_>) {
         draw.background().color(BLACK);
     }
 
-    draw.rect()
-        .w_h(SIZE as f32, SIZE as f32)
-        .color(rgba(0.0, 0.0, 0.0, 0.09));
+    // draw.rect()
+    //     .w_h(SIZE as f32, SIZE as f32)
+    //     .color(rgba(0.0, 0.0, 0.0, 0.09));
 
     draw.rect()
         .wh(app.window_rect().wh())
-        .color(rgba(0.0, 0.0, 0.0, 0.01));
+        .color(rgba(0.0, 0.0, 0.0, 0.1));
 
     for thing in &model.things {
         draw.polyline()
             .points(thing.positions.iter().cloned())
-            .color(WHITE);
+            .color(SNOW);
     }
 
     draw.to_frame(app, &frame).unwrap();
